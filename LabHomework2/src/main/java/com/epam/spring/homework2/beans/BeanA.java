@@ -8,16 +8,12 @@ import org.springframework.beans.factory.InitializingBean;
 
 public class BeanA implements InitializingBean, DisposableBean, CustomValidator {
 
-
 	private String name;
 	private int value;
 
 	public BeanA(String name, int value) {
 		this.name = name;
 		this.value = value;
-	}
-
-	public BeanA() {
 	}
 
 	public String getName() {
@@ -54,10 +50,13 @@ public class BeanA implements InitializingBean, DisposableBean, CustomValidator 
 	@Override
 	public void validate() {
 		if (null == this.name) {
-			App.out("%%%%% '"+this.name+"' is not allowed for 'name' " + this.getClass().getSimpleName());
+			App.out("%%%%% '" + this.name + "' is not allowed for 'name' " 
+					+ this.getClass().getSimpleName());
 		}
 		if (0 > this.value) {
-			App.out("%%%%% Entry error for  '"+this.value+"': only positive value is allowed for " + this.getClass().getCanonicalName());
+			App.out("%%%%% Entry error for  '" 
+					+ this.value + "': only positive value is allowed for "
+					+ this.getClass().getCanonicalName());
 
 		}
 

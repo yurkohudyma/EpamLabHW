@@ -9,7 +9,8 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 public class BeanFactoryPostProcessorImpl implements BeanFactoryPostProcessor{
 
 	@Override
-	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) 
+			throws BeansException {
 		App.out("postProcessBeanFactory");
 	}
 

@@ -37,10 +37,13 @@ public class BeanF implements CustomValidator {
 	@Override
 	public void validate() {
 		if (null == this.name) {
-			App.out("%%%%% '"+this.name+"' is not allowed for 'name' " + this.getClass().getSimpleName());
+			App.out("%%%%% '"+this.name+"' is not allowed for 'name' " 
+					+ this.getClass().getSimpleName());
 		}
 		if (0 > this.value) {
-			App.out("%%%%% Entry error for  '"+this.value+"': only positive value is allowed for " + this.getClass().getCanonicalName());
+			App.out("%%%%% Entry error for  '"
+					+ this.value+"': only positive value is allowed for " 
+					+ this.getClass().getCanonicalName());
 
 		}
 

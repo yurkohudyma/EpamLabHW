@@ -25,7 +25,7 @@ public class AppConfig {
 @Bean ("beanA")
 @DependsOn(value= {"beanD", "beanB", "beanC"})
 public BeanA getBeanA() {
-	return new BeanA("В рот тобі кіло печенька", Integer.MIN_VALUE);
+	return new BeanA("Кіло печенька", Integer.MIN_VALUE);
 }
 
 @Bean (name = "beanB", initMethod="init", destroyMethod = "destroy")
@@ -54,6 +54,4 @@ public BeanE getBeanE() {
 public BeanF getBeanF() {
 	return new BeanF("Мерзенний лежебока", Integer.MAX_VALUE);
 }
-
-
 }
