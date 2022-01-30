@@ -1,12 +1,8 @@
 package com.epam.spring.homework2.beans;
 
-import com.epam.spring.App;
-import com.epam.spring.CustomValidator;
+import com.epam.spring.homework2.validator.Validable;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-
-@ConfigurationProperties(prefix="beans.properties")
-public class BeanD implements CustomValidator {
+public class BeanD implements Validable {
 	
 	private String name;
 	private int value;
@@ -40,18 +36,5 @@ public class BeanD implements CustomValidator {
 		System.out.println("<--------Custom destroyMethod from BeanD--------->");
 	}
 	
-	@Override
-	public void validate() {
-		if (null == this.name) {
-			App.out("%%%%% '"+this.name+"' is not allowed for 'name' " 
-					+ this.getClass().getSimpleName());
-		}
-		if (0 > this.value) {
-			App.out("%%%%% Entry error for  '"
-					+this.value+"': only positive value is allowed for " 
-					+ this.getClass().getCanonicalName());
 
-		}
-
-	}
 }

@@ -5,9 +5,9 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import com.epam.spring.App;
-import com.epam.spring.CustomValidator;
+import com.epam.spring.homework2.validator.Validable;
 
-public class BeanE implements CustomValidator {
+public class BeanE implements Validable {
 	
 	private String name;
 	private int value;
@@ -36,29 +36,18 @@ public class BeanE implements CustomValidator {
 		this.name=name;
 		this.value=value;
 	}
+	
+	/** TASK#8 */
 	@PostConstruct
 	public static void postConstructMethod() {
 		App.out("postConstructMethod invoked from BeanE");
 	}
-	
+
+	/** TASK#8 */
 	@PreDestroy
 	public static void preDestroyMethod() {
 		App.out("preDestroyMethod invoked from BeanE");
 		
 	}
 	
-	@Override
-	public void validate() {
-		if (null == this.name) {
-			App.out("%%%%% '"+this.name+"' is not allowed for 'name' " 
-					+ this.getClass().getSimpleName());
-		}
-		if (0 > this.value) {
-			App.out("%%%%% Entry error for  '"
-					+ this.value+"': only positive value is allowed for " 
-					+ this.getClass().getCanonicalName());
-
-		}
-
-	}
 }

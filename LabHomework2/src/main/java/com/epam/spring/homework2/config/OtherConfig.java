@@ -1,15 +1,13 @@
 package com.epam.spring.homework2.config;
 
-import com.epam.spring.homework2.beans.BeanFactoryPostProcessorImpl;
-import com.epam.spring.homework2.beans.BeanPostProcessorImpl;
 import com.epam.spring.homework2.beans.BeanX;
+import com.epam.spring.homework2.extensions.BeanFactoryPostProcessorImpl;
+import com.epam.spring.homework2.extensions.BeanPostProcessorImpl;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan (basePackages = "com.epam.spring.homework1.beans")
 public class OtherConfig {
 		
 	@Bean ("beanFactoryPostProcessorImpl")

@@ -1,9 +1,8 @@
 package com.epam.spring.homework2.beans;
 
-import com.epam.spring.App;
-import com.epam.spring.CustomValidator;
+import com.epam.spring.homework2.validator.Validable;
 
-public class BeanF implements CustomValidator {
+public class BeanF implements Validable {
 	
 	private String name;
 	private int value;
@@ -34,18 +33,4 @@ public class BeanF implements CustomValidator {
 		return name+"="+value;
 	}
 	
-	@Override
-	public void validate() {
-		if (null == this.name) {
-			App.out("%%%%% '"+this.name+"' is not allowed for 'name' " 
-					+ this.getClass().getSimpleName());
-		}
-		if (0 > this.value) {
-			App.out("%%%%% Entry error for  '"
-					+ this.value+"': only positive value is allowed for " 
-					+ this.getClass().getCanonicalName());
-
-		}
-
-	}
 }

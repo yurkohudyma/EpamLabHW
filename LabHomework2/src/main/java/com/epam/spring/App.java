@@ -1,11 +1,5 @@
 package com.epam.spring;
 
-import com.epam.spring.homework2.beans.BeanA;
-import com.epam.spring.homework2.beans.BeanB;
-import com.epam.spring.homework2.beans.BeanC;
-import com.epam.spring.homework2.beans.BeanD;
-import com.epam.spring.homework2.beans.BeanE;
-import com.epam.spring.homework2.beans.BeanF;
 import com.epam.spring.homework2.config.AppConfig;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -13,35 +7,34 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
 
+	
+	public static ClassPathXmlApplicationContext xmlContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+	public static AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+	
 	public static void main(String[] args) {
 
-		var xmlContext = new ClassPathXmlApplicationContext("applicationContext.xml");
-		var context = new AnnotationConfigApplicationContext(AppConfig.class);
+		
 		out("");
-		out("---------------------------");
-		out("---------AppContext--------");
-		out("---------------------------");
-		for (String var : context.getBeanDefinitionNames()) {
-			out(var);
+		out("\n--------TASK#9-------");
+		for (String contextgetBeanDefinitionNames : context.getBeanDefinitionNames()) {
+			out(contextgetBeanDefinitionNames);
 		}
-		out("------AppContext-END-------");
-		out("");
-		out("---------------------------");
-		out("---------XMLContext--------");
-		out("---------------------------");
-		for (String var : xmlContext.getBeanDefinitionNames()) {
-			out(var);
-		}
-		out("------XMLContext-END-------\n");
+		out("--------TASK#9.END-------\n");
+		
+		outXmlContext("beanB");
+		outXmlContext("beanC");
+		outXmlContext("beanD");
 
-		out(xmlContext.getBean("beanB", BeanB.class).toString());
-		out(xmlContext.getBean("beanC", BeanC.class).toString());
-		out(xmlContext.getBean("beanD", BeanD.class).toString());
-
-		out(context.getBean("beanA", BeanA.class).toString());
-		out(context.getBean("beanE", BeanE.class).toString());
-		out(context.getBean("beanF", BeanF.class).toString());
-
+		outAppContext("beanA");
+		outAppContext("beanE");
+		outAppContext("beanF");
+		
+		out("\n--------TASK#12-------");
+		outAppContextBeanDefinition("beanA");
+		outAppContextBeanDefinition("beanE");
+		outAppContextBeanDefinition("beanF");
+		out("--------TASK#12.END-------\n");
+		
 		context.close();
 		xmlContext.close();
 
@@ -50,12 +43,18 @@ public class App {
 	public static void out(String string) {
 		System.out.println(string);
 	}
-
-	public static void out(String[] beanDefinitionNames) {
-
+	
+	public static void outXmlContext(String beanName) {
+		System.out.println(xmlContext.getBean(beanName).toString());
 	}
-
-	public static void out(Class<? extends Object> clazz) {
-
+	
+	public static void outAppContext(String beanName) {
+		System.out.println(context.getBean(beanName).toString());
 	}
+	
+	public static void outAppContextBeanDefinition(String beanName) {
+		System.out.println(beanName+" definition: "+context.getBeanDefinition(beanName).toString());
+	}
+	
+	
 }

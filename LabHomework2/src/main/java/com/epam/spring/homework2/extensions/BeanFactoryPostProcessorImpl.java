@@ -1,4 +1,4 @@
-package com.epam.spring.homework2.beans;
+package com.epam.spring.homework2.extensions;
 
 import com.epam.spring.App;
 
@@ -11,10 +11,8 @@ public class BeanFactoryPostProcessorImpl implements BeanFactoryPostProcessor{
 	@Override
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) 
 			throws BeansException {
-		App.out("postProcessBeanFactory");
-	}
-
-	
-	
-	
+		App.out("\npostProcessBeanFactory for TASK#10\n");	
+		beanFactory.getBeanDefinition("beanB")
+		.setInitMethodName("initByBeanFactoryPostProcessor");
+	}	
 }
