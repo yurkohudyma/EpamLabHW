@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        
+    <context:property-placeholder location="classpath:beans.properties"/>
+  
+    <bean id="beanB"
+          class="com.epam.spring.homework2.beans.BeanB"
+          init-method="init" destroy-method="destroy"
+          >
+          <property name="name" value="${beanB.name}"/>
+          <property name="value" value="${beanB.value}"/>
+    </bean>
+
+    <bean id="beanC"
+          class="com.epam.spring.homework2.beans.BeanC">
+          <property name="name" value="${beanC.name}"/>
+          <property name="value" value="${beanC.value}"/>
+    </bean>
+    
+    <bean id="beanD"
+          class="com.epam.spring.homework2.beans.BeanD">
+          <property name="name" value="${beanD.name}"/>
+          <property name="value" value="${beanD.value}"
+          
+          />
+    </bean>
+    
+    <bean id="beanX"
+          class="com.epam.spring.homework2.beans.BeanX"
+          factory-method="slamYourself">
+          
+    </bean>
+
+</beans>
