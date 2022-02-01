@@ -15,39 +15,39 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Lazy;
 
 @Configuration
-@Import (OtherConfig.class)
+@Import(OtherConfig.class)
 public class AppConfig {
-	
-@Bean ("beanA")
-@DependsOn(value= {"beanD", "beanB", "beanC"})
-public BeanA getBeanA() {
-	return new BeanA("Кіло печенька", Integer.MIN_VALUE);
-}
 
-@Bean (name = "beanB", initMethod="init", destroyMethod = "destroy")
-@ConfigurationProperties (prefix = "beanB")
-public static BeanB getBeanB() {
-	return new BeanB();
-}
+	@Bean("beanA")
+	@DependsOn(value = { "beanD", "beanB", "beanC" })
+	public BeanA getBeanA() {
+		return new BeanA("Кіло печенька", Integer.MIN_VALUE);
+	}
 
-@Bean (name = "beanC", initMethod="init", destroyMethod = "destroy")
-public BeanC getBeanC() {
-	return new BeanC();
-}
+	@Bean(name = "beanB", initMethod = "init", destroyMethod = "destroy")
+	@ConfigurationProperties(prefix = "beanB")
+	public static BeanB getBeanB() {
+		return new BeanB();
+	}
 
-@Bean (name = "beanD", initMethod="init", destroyMethod = "destroy")
-public BeanD getBeanD() {
-	return new BeanD();
-}
+	@Bean(name = "beanC", initMethod = "init", destroyMethod = "destroy")
+	public BeanC getBeanC() {
+		return new BeanC();
+	}
 
-@Bean ("beanE")
-public BeanE getBeanE() {
-	return new BeanE("Баян Степанович", 13);
-}
+	@Bean(name = "beanD", initMethod = "init", destroyMethod = "destroy")
+	public BeanD getBeanD() {
+		return new BeanD();
+	}
 
-@Bean ("beanF")
-@Lazy
-public BeanF getBeanF() {
-	return new BeanF("Мерзенний лежебока", Integer.MAX_VALUE);
-}
+	@Bean("beanE")
+	public BeanE getBeanE() {
+		return new BeanE("Баян Степанович", 13);
+	}
+
+	@Bean("beanF")
+	@Lazy
+	public BeanF getBeanF() {
+		return new BeanF("Мерзенний лежебока", Integer.MAX_VALUE);
+	}
 }

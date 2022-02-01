@@ -3,14 +3,14 @@ package com.epam.spring.homework2.beans;
 import com.epam.spring.homework2.validator.Validable;
 
 public class BeanC implements Validable {
-	
+
 	private String name;
 	private int value;
-	
+
 	public String toString() {
-		return name+"="+value;
+		return name + "=" + value;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -27,12 +27,12 @@ public class BeanC implements Validable {
 		this.value = value;
 	}
 
-    public void init() {
-        System.out.println("<---------Custom initMethod from BeanC---------->");
-}
-	
+	public void init() {
+		System.out.println("<---------Custom initMethod from BeanC---------->");
+	}
+
 	public void destroy() {
 		System.out.println("<--------Custom destroyMethod from BeanC--------->");
 	}
-		
+
 }
