@@ -20,6 +20,8 @@ public class UserController {
     public List<UserDto> getAllUsers()
     {return userService.listUsers(); }
 
+
+    /** g */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/user/{email}")
     public UserDto getUser(@PathVariable String email)
