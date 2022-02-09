@@ -36,12 +36,9 @@ public class CarController {
 
     @ApiOperation("Get cars of a carclass")
     @GetMapping(value = "/carclass")
-    public Set<CarDto> getCarClassCars (CarClass carClass)
-    {return carService.getCarClassCars(carClass); }
-
-
-
-
+    public Set<CarDto> getCarClassCars(CarClass carClass) {
+        return carService.getCarClassCars(carClass);
+    }
 
 
 }

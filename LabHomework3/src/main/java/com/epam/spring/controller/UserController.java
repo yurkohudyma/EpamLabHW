@@ -17,30 +17,33 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/user")
-    public List<UserDto> getAllUsers()
-    {return userService.listUsers(); }
+    public List<UserDto> getAllUsers() {
+        return userService.listUsers();
+    }
 
-
-    /** g */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/user/{email}")
-    public UserDto getUser(@PathVariable String email)
-    { return userService.getUser(email);}
+    public UserDto getUser(@PathVariable String email) {
+        return userService.getUser(email);
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @GetMapping(value = "/user")
-    public UserDto createUser(@RequestBody UserDto userDto)
-    {return userService.createUser(userDto);}
+    public UserDto createUser(@RequestBody UserDto userDto) {
+        return userService.createUser(userDto);
+    }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/user/{email}")
-    public UserDto updateUser (@PathVariable String email, @RequestBody UserDto userDto)
-    {return userService.updateUser(email,userDto);}
+    public UserDto updateUser(@PathVariable String email, @RequestBody UserDto userDto) {
+        return userService.updateUser(email, userDto);
+    }
 
     @DeleteMapping(value = "/user/{email}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String email)
-    {return ResponseEntity.noContent().build();}
-
+    public ResponseEntity<Void> deleteUser(@PathVariable String email) {
+        userService.deleteUser(email);
+        return ResponseEntity.noContent().build();
+    }
 
 
 }

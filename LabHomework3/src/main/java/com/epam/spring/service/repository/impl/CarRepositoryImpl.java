@@ -3,6 +3,7 @@ package com.epam.spring.service.repository.impl;
 import com.epam.spring.controller.dto.CarClass;
 import com.epam.spring.service.model.Car;
 import com.epam.spring.service.repository.CarRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Component
 public class CarRepositoryImpl implements CarRepository {
 
     private Map<String, Car> cars = new HashMap<>();

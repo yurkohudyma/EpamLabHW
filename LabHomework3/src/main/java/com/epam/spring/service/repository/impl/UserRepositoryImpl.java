@@ -2,11 +2,13 @@ package com.epam.spring.service.repository.impl;
 
 import com.epam.spring.service.model.User;
 import com.epam.spring.service.repository.UserRepository;
+import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class UserRepositoryImpl implements UserRepository {
 
     private final List<User> list = new ArrayList<>();
@@ -31,19 +33,19 @@ public class UserRepositoryImpl implements UserRepository {
         return user;
     }
 
-    /** Update user means delete previous,
+    /**
+     * Update user means delete previous,
      * acknowledge, insert new
      */
 
     @Override
     public User updateUser(String email, User user) {
         boolean isDeleted = list.removeIf(u -> u.getEmail().equals(email));
-            if (isDeleted) {
-                list.add(user);
-            }
-            else {
-                throw new RuntimeException("User not found");
-            }
+        if (isDeleted) {
+            list.add(user);
+        } else {
+            throw new RuntimeException("User not found");
+        }
         return user;
     }
 
