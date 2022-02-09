@@ -23,7 +23,7 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public List<User> listUsers() {
-        return new ArrayList<>();
+        return new ArrayList<>(list);
     }
 
     @Override

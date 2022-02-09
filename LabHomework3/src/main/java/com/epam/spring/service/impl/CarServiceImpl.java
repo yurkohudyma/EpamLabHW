@@ -21,6 +21,7 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public CarDto createCar(CarClass carClass, CarDto carDto) {
+        log.info("createCar by carclass {}", carClass);
         Car newCar = CarMapper.INSTANCE.mapCar(carDto);
         newCar.setCarClass(carClass);
         newCar = carRepo.createCar(newCar);
@@ -28,13 +29,13 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public CarDto updateCar(CarDto carDto) {
-        /** update a car */
+    public CarDto updateCar(CarDto carDto, int carId) {
+        log.info("updateCar by id {}", carId);
         return null;
     }
 
     @Override
-    public void deleteCar(CarDto carDto) {
+    public void deleteCar(int carId) {
         /** delete a car */
     }
 
@@ -46,7 +47,8 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public Set<CarDto> getCars() {
-        return null;
+        Set<Car> cars = carRepo.getCars();
+        return CarMapper.INSTANCE.mapCarDtos(cars);
     }
 
     @Override

@@ -9,9 +9,9 @@ public interface CarService {
 
     CarDto createCar (CarClass carClass, CarDto carDto);
 
-    CarDto updateCar (CarDto carDto);
+    CarDto updateCar(CarDto carDto, int carId);
 
-    void deleteCar (CarDto carDto);
+    void deleteCar(int carId);
 
     Set<CarDto> getCarClassCars(CarClass carClass);
 

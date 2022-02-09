@@ -16,16 +16,22 @@ public class Order {
     private int carId;
     private String model;
     private CarClass carClass;
+
     @DateTimeFormat
     private LocalDate dateBegin;
+
     @DateTimeFormat
     private LocalDate dateEnd;
+
     @NotBlank
     private OrderStatus orderStatus;
+
     @NotBlank
     private String passportData;
+
     @NotBlank
     private boolean driverNeeded;
+
     private float price;
     private String additionalInfo;
     private String userName;

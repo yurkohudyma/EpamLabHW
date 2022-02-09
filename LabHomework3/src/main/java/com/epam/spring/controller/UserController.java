@@ -28,13 +28,13 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @GetMapping(value = "/user")
+    @PostMapping(value = "/user")
     public UserDto createUser(@RequestBody UserDto userDto) {
         return userService.createUser(userDto);
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping(value = "/user/{email}")
+    @PutMapping(value = "/user/{email}")
     public UserDto updateUser(@PathVariable String email, @RequestBody UserDto userDto) {
         return userService.updateUser(email, userDto);
     }

@@ -9,7 +9,13 @@ public interface CarRepository {
 
     Car createCar(Car newCar);
 
+    Car updateCar(Car car, String id);
+
     Set<Car> getCarByCarClass(CarClass carClass);
+
+    Set<Car> getCars();
+
+    void deleteCar(String id);
 }
 
 
