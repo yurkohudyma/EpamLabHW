@@ -22,15 +22,41 @@ public class CarDto {
     @JsonProperty(access = READ_ONLY)
     private int id;
 
-    @NotBlank
+    @NotBlank(message = "{model.notblank}")
     private String model;
 
-    @NotBlank
+    @NotBlank(message = "{carclass.notblank}")
     private CarClass carClass;
 
     @Positive
     private float price;
 
+    @Positive
+    private int seats;
+
     private int description;
 
 }
+
+/**
+ * DIFFERENCE BETWEEN @@NOTEMPTY, NOTNULL, NOTBLANK
+ * String name = null;
+ * NotNull = false
+ * NotEmpty = false
+ * NotBlank = false
+ * <p>
+ * String nam = "";
+ * NotNull = true
+ * NotEmpty = false
+ * NotBlank = false
+ * <p>
+ * String name = "  ";
+ * NotNull = true
+ * NotEmpty = true
+ * NotBlank = false
+ * <p>
+ * String name = "Махно"
+ * NotNull = true
+ * NotEmpty = true
+ * NotBlank = true
+ */

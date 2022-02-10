@@ -27,7 +27,6 @@ public class CarRepositoryImpl implements CarRepository {
         if (isDeleted) {
             cars.put(id, car);
         } else throw new RuntimeException("Car is not found");
-
         return car;
     }
 

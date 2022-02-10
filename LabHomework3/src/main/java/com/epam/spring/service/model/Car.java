@@ -14,4 +14,5 @@ public class Car {
     private float price;
     private int carInfo;
     private Set<CarClass> carClasses;
+    private int numberOfSeats;
 }

@@ -23,10 +23,10 @@ public class UserDto {
     @JsonProperty(access = READ_ONLY)
     private int userId;
 
-    @NotBlank
+    @NotBlank(message = "{email.notblank}")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "{accessLevel.notblank}")
     private AccessLevel accessLevel;
 
 
