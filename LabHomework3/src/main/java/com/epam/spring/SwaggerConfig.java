@@ -28,7 +28,7 @@ public class SwaggerConfig {
                 .groupName("Yurko Hudyma Car Rental")
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.epam.spring"))
-                //.paths(PathSelectors.ant("/api/v1/**"))
+                .paths(PathSelectors.ant("/api/v1/**"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(apiEndPointInfo());
     }

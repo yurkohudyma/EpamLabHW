@@ -1,19 +1,25 @@
 package com.epam.spring.service.repository;
 
-import com.epam.spring.controller.dto.CarClass;
 import com.epam.spring.service.model.Car;
+import com.epam.spring.service.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Set;
+import java.util.Optional;
 
-public interface CarRepository {
+public interface CarRepository extends JpaRepository<Car, Long> {
 
-    Car createCar(Car newCar);
+    Optional<User> findById(long id);
 
-    Car updateCar(Car car, String id);
+    boolean existsById(long id);
 
-    Set<Car> getCarByCarClass(CarClass carClass);
+    //@Query("select c from car c where c.model like '?1%'")
+    //Car findModelByFirstLetterPageableSorted (char firstLetter, Pageable pageable, Sort sort);
 
-    Set<Car> getCars();
-
-    void deleteCar(String id);
+    /*@Query(nativeQuery = true)
+    List<Car> findByFirstLetterAndPriceBetween(@Param("firstLetter") char firstLetter,
+                                               @Param("startPriceRange") float startPriceRange,
+                                               @Param("endPriceRange") float endPriceRange);
+    */
+    /** NamedQuery */
+    //Car findMostExpensiveCar ();
 }

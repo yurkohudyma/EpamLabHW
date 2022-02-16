@@ -8,13 +8,17 @@ import org.mapstruct.factory.Mappers;
 
 import java.util.Set;
 
+/**
+ * MapStruct implementation (HW_4)
+ */
+
 @Mapper
 public interface CarMapper {
 
     CarMapper INSTANCE = Mappers.getMapper(CarMapper.class);
 
     @Mapping(source = "numberOfSeats", target = "seats")
-    Set<CarDto> mapCarDtos (Set<Car>cars);
+    Set<CarDto> mapCarDtos(Set<Car> cars);
 
     @Mapping(source = "numberOfSeats", target = "seats")
     CarDto mapCarDto (Car cars);

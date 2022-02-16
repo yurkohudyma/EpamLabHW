@@ -6,6 +6,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
+/**
+ * i18n task from HM_4
+ */
+
 @Configuration
 public class MessageConfig {
 

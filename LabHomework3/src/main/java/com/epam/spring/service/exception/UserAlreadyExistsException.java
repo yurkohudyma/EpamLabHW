@@ -1,8 +1,15 @@
 package com.epam.spring.service.exception;
 
-public class UserAlreadyExistsException extends RuntimeException {
+import com.epam.spring.service.model.ErrorType;
+
+public class UserAlreadyExistsException extends ServiceException {
 
     public UserAlreadyExistsException(String message) {
-        super(message);
+        super("User already exists");
+    }
+
+    @Override
+    ErrorType getErrorType() {
+        return ErrorType.VALIDATION_ERROR_TYPE;
     }
 }

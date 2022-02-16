@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-10T14:40:33+0200",
+    date = "2022-02-16T16:27:07+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 @Component
@@ -39,7 +39,7 @@ public class CarMapperImpl implements CarMapper {
 
         carDto.setSeats( cars.getNumberOfSeats() );
         if ( cars.getId() != null ) {
-            carDto.setId( Integer.parseInt( cars.getId() ) );
+            carDto.setId( cars.getId().intValue() );
         }
         carDto.setModel( cars.getModel() );
         carDto.setCarClass( cars.getCarClass() );
@@ -57,7 +57,7 @@ public class CarMapperImpl implements CarMapper {
         Car car = new Car();
 
         car.setNumberOfSeats( dto.getSeats() );
-        car.setId( String.valueOf( dto.getId() ) );
+        car.setId( (long) dto.getId() );
         car.setModel( dto.getModel() );
         car.setCarClass( dto.getCarClass() );
         car.setPrice( dto.getPrice() );

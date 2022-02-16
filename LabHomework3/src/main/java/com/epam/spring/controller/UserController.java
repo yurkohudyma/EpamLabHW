@@ -7,19 +7,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    @ResponseStatus(HttpStatus.OK)
+/*    @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/user")
     public List<UserDto> getAllUsers() {
         return userService.listUsers();
-    }
+    }*/
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/user/{email}")
@@ -34,7 +32,7 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @PutMapping(value = "/user/{email}")
+    @PatchMapping(value = "/user/{email}")
     public UserDto updateUser(@PathVariable String email, @RequestBody UserDto userDto) {
         return userService.updateUser(email, userDto);
     }
