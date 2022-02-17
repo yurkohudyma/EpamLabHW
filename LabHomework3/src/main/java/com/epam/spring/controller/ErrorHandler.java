@@ -1,5 +1,6 @@
 package com.epam.spring.controller;
 
+import com.epam.spring.controller.dto.ErrorDto;
 import com.epam.spring.service.exception.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -17,24 +18,25 @@ public class ErrorHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public List<Error> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public List<ErrorDto> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error("handleMethodArgumentNotValidException: exception {}", e.getMessage(), e);
         return e.getBindingResult().getAllErrors().stream()
-                .map(err -> new Error(err.getDefaultMessage()))
+                .map(err -> new ErrorDto(err.getDefaultMessage()))
                 .collect(Collectors.toList());
     }
 
     @ExceptionHandler(EntityNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Error handleEntityNotFoundException(EntityNotFoundException e) {
+    public ErrorDto handleEntityNotFoundException(EntityNotFoundException e) {
         log.error("handleEntityNotFoundException: exception {)", e.getMessage(), e);
-        return new Error(e.getMessage());
+        return new ErrorDto(e.getMessage());
     }
 
     @ExceptionHandler(NullPointerException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public String handleNullPointerException(NullPointerException e) {
-        return e.getMessage();
+    public ErrorDto handleNullPointerException(NullPointerException e) {
+        log.error("NullPointerException: exception {)", e.getMessage(), e);
+        return new ErrorDto(e.getMessage());
     }
 
 

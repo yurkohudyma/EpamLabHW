@@ -11,5 +11,4 @@ public interface MappingService {
 
     User populateUsersWithPresentUserDtoFields(User user, UserDto userDto);
 
-
 }

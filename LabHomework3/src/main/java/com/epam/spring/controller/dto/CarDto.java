@@ -1,6 +1,7 @@
 package com.epam.spring.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
@@ -17,6 +18,7 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY;
  */
 
 @Data
+@Builder
 public class CarDto {
 
     @JsonProperty(access = READ_ONLY)
@@ -26,7 +28,7 @@ public class CarDto {
     private String model;
 
     @NotBlank(message = "{carclass.notblank}")
-    private CarClass carClass;
+    private Carclass carclass;
 
     @Positive
     private float price;
@@ -34,7 +36,7 @@ public class CarDto {
     @Positive
     private int seats;
 
-    private int description;
+    private String text;
 
 }
 

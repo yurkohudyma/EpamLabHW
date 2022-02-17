@@ -1,6 +1,7 @@
 package com.epam.spring.service.repository.impl;
 
 import com.epam.spring.service.model.Comment;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,6 +13,7 @@ import java.util.List;
  * Make use of JdbcTemplate class somewhere in you code
  */
 @Repository
+@Slf4j
 public class CommentJdbcTemplate {
 
     @Autowired

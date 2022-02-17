@@ -1,6 +1,6 @@
 package com.epam.spring.service.model;
 
-import com.epam.spring.controller.dto.CarClass;
+import com.epam.spring.controller.dto.Carclass;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+//@AllArgsConstructor
 
 /*
 @NamedNativeQuery(name = "findByFirstLetterAndPriceBetween",
@@ -23,30 +24,32 @@ import javax.persistence.*;
 public class Car {
 
     /**
+     * @YurkoHudyma stub for future use
      * @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "my_seq")
      * @SequenceGenerator(name = "my_seq", sequenceName = "my_seq", allocationSize = 1)
-     * @YurkoHudyma stub for future use
      */
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
 
-    @Column(nullable = false, unique = true)
+    //@Column(nullable = false, unique = true)
     private String model;
 
     @Column(nullable = false)
-    private CarClass carClass;
+    private Carclass carclass;
 
     @Column(nullable = false)
     private float price;
 
-    private int carInfo;
+    private String text;
     private int numberOfSeats;
 
-    public Car(String model, CarClass carClass, float price) {
+    public Car(String model, Carclass carclass, float price, String text, int numberOfSeats) {
         this.model = model;
-        this.carClass = carClass;
+        this.carclass = carclass;
         this.price = price;
+        this.text = text;
+        this.numberOfSeats = numberOfSeats;
     }
 }

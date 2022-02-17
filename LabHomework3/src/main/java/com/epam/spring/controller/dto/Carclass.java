@@ -1,5 +1,5 @@
 package com.epam.spring.controller.dto;
 
-public enum CarClass {
+public enum Carclass {
     MINI, ECONOMY, SUV, ESTATE, PREMIUM
 }

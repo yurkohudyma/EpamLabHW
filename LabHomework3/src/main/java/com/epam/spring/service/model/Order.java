@@ -1,6 +1,6 @@
 package com.epam.spring.service.model;
 
-import com.epam.spring.controller.dto.CarClass;
+import com.epam.spring.controller.dto.Carclass;
 import com.epam.spring.controller.dto.OrderStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,7 +30,7 @@ public class Order {
     private String model;
 
     @Column(name = "carclass", nullable = false)
-    private CarClass carClass;
+    private Carclass carClass;
 
     @DateTimeFormat
     private LocalDate dateBegin;

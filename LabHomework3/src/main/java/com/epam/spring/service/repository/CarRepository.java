@@ -1,25 +1,35 @@
 package com.epam.spring.service.repository;
 
 import com.epam.spring.service.model.Car;
-import com.epam.spring.service.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    Optional<User> findById(long id);
+    boolean existsById(int id);
 
-    boolean existsById(long id);
+    Car findById(int id);
 
-    //@Query("select c from car c where c.model like '?1%'")
-    //Car findModelByFirstLetterPageableSorted (char firstLetter, Pageable pageable, Sort sort);
+    List<Car> findByModel(String model);
 
-    /*@Query(nativeQuery = true)
-    List<Car> findByFirstLetterAndPriceBetween(@Param("firstLetter") char firstLetter,
-                                               @Param("startPriceRange") float startPriceRange,
-                                               @Param("endPriceRange") float endPriceRange);
-    */
-    /** NamedQuery */
-    //Car findMostExpensiveCar ();
+    /**
+     * TODO
+     *
+     * Optional<User> findById(int id);
+
+     List<Car> findbyCarclass(Carclass carclass);
+
+
+     @Query("select c from car c where c.model like '?1%'")
+     Car findModelByFirstLetterPageableSorted (char firstLetter, Pageable pageable, Sort sort);
+
+     @Query(nativeQuery = true)
+     List<Car> findByFirstLetterAndPriceBetween(@Param("firstLetter") char firstLetter,
+     @Param("startPriceRange") float startPriceRange,
+     @Param("endPriceRange") float endPriceRange);
+
+     //NamedQuery
+     Car findMostExpensiveCar ();
+     */
 }

@@ -29,7 +29,7 @@ public class OrderDto {
 
     private String model;
 
-    private CarClass carClass;
+    private Carclass carClass;
 
     @DateTimeFormat
     private LocalDate dateBegin;

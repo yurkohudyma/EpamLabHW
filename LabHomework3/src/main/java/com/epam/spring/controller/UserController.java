@@ -1,23 +1,21 @@
 package com.epam.spring.controller;
 
-import com.epam.spring.controller.dto.UserDto;
-import com.epam.spring.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
 public class UserController {
-
+/*
     private final UserService userService;
 
-/*    @ResponseStatus(HttpStatus.OK)
+TODO
+
+   @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/user")
     public List<UserDto> getAllUsers() {
         return userService.listUsers();
-    }*/
+    }
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping(value = "/user/{email}")
@@ -42,6 +40,6 @@ public class UserController {
         userService.deleteUser(email);
         return ResponseEntity.noContent().build();
     }
-
+*/
 
 }
