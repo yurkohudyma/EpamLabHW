@@ -24,14 +24,10 @@ public class UserDto {
     String password;
     String name;
     @JsonProperty(access = READ_ONLY)
-    private long id;
+    private int id;
     @Email
     @NotBlank(message = "{email.notblank}"/*, groups = OnCreate.class*/)
     private String email;
-    @NotBlank(message = "{accessLevel.notblank}")
-    private AccessLevel accessLevel;
-
-    public String getRepeatPassword() {
-        return password;
-    }
+    @NotBlank(message = "{accesslevel.notblank}")
+    private Accesslevel accesslevel;
 }

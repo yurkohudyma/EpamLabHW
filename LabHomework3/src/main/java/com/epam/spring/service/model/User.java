@@ -1,8 +1,7 @@
 package com.epam.spring.service.model;
 
-import com.epam.spring.controller.dto.AccessLevel;
+import com.epam.spring.controller.dto.Accesslevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,16 +11,15 @@ import java.util.List;
 
 @Entity
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user")
+@Table(name = "user_table")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
-    private long userId;
+    @Column(name = "id")
+    private int id;
 
     @OneToMany(mappedBy = "username")
     private List<Order> orders;
@@ -29,7 +27,7 @@ public class User {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    private AccessLevel accessLevel;
+    private Accesslevel accesslevel;
 
     @Transient
     private Instant writtenOn;

@@ -18,7 +18,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 @AllArgsConstructor
-@Api(tags = "SWAGGER documentation")
+@Api(tags = "SWAGGER")
 @ApiResponses({
         @ApiResponse(code = 404, message = "Not found"),
         @ApiResponse(code = 500, message = "Internal Server Error")
@@ -29,14 +29,14 @@ public class CarController {
     private final CarService carService;
 
     @ApiOperation("Get cars of a carclass")
-    @GetMapping(value = "/{carclass}")
+    @GetMapping(value = "/carCLASS/{carclass}")
     public List<CarDto> getCarClassCars(@PathVariable Carclass carclass) {
         List<Car> cars = carService.findByCarclass(carclass);
         return CarMapper.INSTANCE.mapCarDtos(cars);
     }
 
     @ApiOperation("Get model")
-    @GetMapping(value = "/model/{model}")
+    @GetMapping(value = "/carMODEL/{model}")
     public List<CarDto> findByModel(@PathVariable String model) {
         List<Car> cars = carService.getCarByModel(model);
         return CarMapper.INSTANCE.mapCarDtos(cars);
@@ -44,11 +44,10 @@ public class CarController {
 
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation("Get car by Id")
-    @GetMapping(value = "/car/{id}")
+    @GetMapping(value = "/carID/{id}")
     public CarDto getCarById(@PathVariable int id) {
         Car car = carService.getCarById(id);
         return CarMapper.INSTANCE.mapCarDto(car);
-
     }
 
     @ResponseStatus(HttpStatus.OK)

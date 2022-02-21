@@ -11,25 +11,25 @@ create table car
 
 create table order_table
 (
-    order_id bigint not null,
+    order_id integer not null,
     additional_info varchar(255),
     carclass enum ('MINI', 'ECONOMY', 'SUV', 'ESTATE', 'PREMIUM'),
     date_begin date, date_end date,
     driver_needed boolean not null,
     model varchar(255) not null,
-    orderstatus integer not null,
+    orderstatus enum('1', '2', '3', '4'),
     passportdata varchar(255) not null,
     price float not null,
-    user_id bigint,
+    user_id integer,
     primary key (order_id)
 );
 
-create table user
+create table user_table
 (
-    user_id bigint not null,
-    access_level enum('ADMIN', 'USER', 'MANAGER', 'BLOCKED'),
+    id integer not null,
+    accesslevel enum('ADMIN', 'USER', 'MANAGER', 'BLOCKED'),
     email varchar(255) not null,
     name varchar(255),
     password varchar(255),
-    primary key (user_id)
+    primary key (id)
 );

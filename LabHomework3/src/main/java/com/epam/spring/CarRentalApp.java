@@ -27,6 +27,6 @@ public class CarRentalApp implements CommandLineRunner {
         commentJdbcTemplate.insertComment(new Comment(371, 532, 3743, "інтеропіпочний цуріпопік"));
         commentJdbcTemplate.insertComment(new Comment(4349385, 54332, 3764343, "фет фрумос і сестра його макальонґуа"));
 
-        commentJdbcTemplate.findAll().forEach(System.out::println);
+        //commentJdbcTemplate.findAll().forEach(System.out::println);
     }
 }

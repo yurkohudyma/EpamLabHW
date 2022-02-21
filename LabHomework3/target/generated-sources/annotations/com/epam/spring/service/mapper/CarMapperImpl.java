@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-21T15:11:33+0200",
+    date = "2022-02-21T15:46:58+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 @Component
@@ -25,20 +25,6 @@ public class CarMapperImpl implements CarMapper {
         List<CarDto> list = new ArrayList<CarDto>( cars.size() );
         for ( Car car : cars ) {
             list.add( mapCarDto( car ) );
-        }
-
-        return list;
-    }
-
-    @Override
-    public List<Car> mapCars(List<CarDto> cars) {
-        if ( cars == null ) {
-            return null;
-        }
-
-        List<Car> list = new ArrayList<Car>( cars.size() );
-        for ( CarDto carDto : cars ) {
-            list.add( mapCar( carDto ) );
         }
 
         return list;
@@ -60,23 +46,5 @@ public class CarMapperImpl implements CarMapper {
         carDto.text( cars.getText() );
 
         return carDto.build();
-    }
-
-    @Override
-    public Car mapCar(CarDto dto) {
-        if ( dto == null ) {
-            return null;
-        }
-
-        Car car = new Car();
-
-        car.setId( dto.getId() );
-        car.setModel( dto.getModel() );
-        car.setCarclass( dto.getCarclass() );
-        car.setPrice( dto.getPrice() );
-        car.setText( dto.getText() );
-        car.setSeats( dto.getSeats() );
-
-        return car;
     }
 }

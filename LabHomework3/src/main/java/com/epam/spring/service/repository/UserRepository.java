@@ -1,14 +1,20 @@
 package com.epam.spring.service.repository;
 
+import com.epam.spring.controller.dto.Accesslevel;
 import com.epam.spring.service.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-    Optional<User> findByEmail(String email);
+    boolean existsById(int id);
 
-    boolean existsByEmail(String email);
+    User findById(int id);
+
+    List<User> findByEmail(String email);
+
+    List<User> findByAccesslevel(Accesslevel accesslevel);
+
+    List<User> findAll();
 }
-
