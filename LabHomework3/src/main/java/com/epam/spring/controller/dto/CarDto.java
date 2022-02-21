@@ -1,8 +1,10 @@
 package com.epam.spring.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
@@ -10,8 +12,6 @@ import javax.validation.constraints.Positive;
 import static com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY;
 
 /**
- * Order Dto
- *
  * @author Yurko Hudyma
  * @version 1.0
  * @since 27.01.2022
@@ -19,6 +19,8 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CarDto {
 
     @JsonProperty(access = READ_ONLY)
@@ -39,26 +41,3 @@ public class CarDto {
     private String text;
 
 }
-
-/**
- * DIFFERENCE BETWEEN @@NOTEMPTY, NOTNULL, NOTBLANK
- * String name = null;
- * NotNull = false
- * NotEmpty = false
- * NotBlank = false
- * <p>
- * String nam = "";
- * NotNull = true
- * NotEmpty = false
- * NotBlank = false
- * <p>
- * String name = "  ";
- * NotNull = true
- * NotEmpty = true
- * NotBlank = false
- * <p>
- * String name = "Махно"
- * NotNull = true
- * NotEmpty = true
- * NotBlank = true
- */

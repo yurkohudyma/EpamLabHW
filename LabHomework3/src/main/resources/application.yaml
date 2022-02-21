@@ -1,8 +1,10 @@
-spring:
-  jpa:
-    show-sql: true
+#spring:
+#  jpa:
+#    show-sql: true
+#
+#logging:
+#  level:
+#    org.springframework.org.jpa: DEBUG
+#    org.springframework.transaction: DEBUG
 
-logging:
-  level:
-    org.springframework.org.jpa: DEBUG
-    org.springframework.transaction: DEBUG
+

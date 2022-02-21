@@ -9,9 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Make use of JdbcTemplate class somewhere in you code
- */
 @Repository
 @Slf4j
 public class CommentJdbcTemplate {

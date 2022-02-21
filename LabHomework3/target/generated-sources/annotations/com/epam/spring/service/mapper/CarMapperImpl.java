@@ -1,32 +1,47 @@
 package com.epam.spring.service.mapper;
 
 import com.epam.spring.controller.dto.CarDto;
+import com.epam.spring.controller.dto.CarDto.CarDtoBuilder;
 import com.epam.spring.service.model.Car;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2022-02-16T18:16:02+0200",
+    date = "2022-02-21T15:11:33+0200",
     comments = "version: 1.4.2.Final, compiler: javac, environment: Java 17.0.2 (Oracle Corporation)"
 )
 @Component
 public class CarMapperImpl implements CarMapper {
 
     @Override
-    public Set<CarDto> mapCarDtos(Set<Car> cars) {
+    public List<CarDto> mapCarDtos(List<Car> cars) {
         if ( cars == null ) {
             return null;
         }
 
-        Set<CarDto> set = new HashSet<CarDto>( Math.max( (int) ( cars.size() / .75f ) + 1, 16 ) );
+        List<CarDto> list = new ArrayList<CarDto>( cars.size() );
         for ( Car car : cars ) {
-            set.add( mapCarDto( car ) );
+            list.add( mapCarDto( car ) );
         }
 
-        return set;
+        return list;
+    }
+
+    @Override
+    public List<Car> mapCars(List<CarDto> cars) {
+        if ( cars == null ) {
+            return null;
+        }
+
+        List<Car> list = new ArrayList<Car>( cars.size() );
+        for ( CarDto carDto : cars ) {
+            list.add( mapCar( carDto ) );
+        }
+
+        return list;
     }
 
     @Override
@@ -35,17 +50,16 @@ public class CarMapperImpl implements CarMapper {
             return null;
         }
 
-        CarDto carDto = new CarDto();
+        CarDtoBuilder carDto = CarDto.builder();
 
-        carDto.setSeats( cars.getNumberOfSeats() );
-        if ( cars.getId() != null ) {
-            carDto.setId( cars.getId().intValue() );
-        }
-        carDto.setModel( cars.getModel() );
-        carDto.setCarClass( cars.getCarClass() );
-        carDto.setPrice( cars.getPrice() );
+        carDto.id( cars.getId() );
+        carDto.model( cars.getModel() );
+        carDto.carclass( cars.getCarclass() );
+        carDto.price( cars.getPrice() );
+        carDto.seats( cars.getSeats() );
+        carDto.text( cars.getText() );
 
-        return carDto;
+        return carDto.build();
     }
 
     @Override
@@ -56,11 +70,12 @@ public class CarMapperImpl implements CarMapper {
 
         Car car = new Car();
 
-        car.setNumberOfSeats( dto.getSeats() );
-        car.setId( (long) dto.getId() );
+        car.setId( dto.getId() );
         car.setModel( dto.getModel() );
-        car.setCarClass( dto.getCarClass() );
+        car.setCarclass( dto.getCarclass() );
         car.setPrice( dto.getPrice() );
+        car.setText( dto.getText() );
+        car.setSeats( dto.getSeats() );
 
         return car;
     }
