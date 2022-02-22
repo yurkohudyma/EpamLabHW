@@ -18,15 +18,16 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "order_id")
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(/*fetch = FetchType.LAZY*/)
     @JoinColumn(name = "user_id")
     private User userId;
 
+    @OneToOne
     @JoinColumn(name = "car_id", nullable = false)
-    private int car_id;
+    private Car carId;
 
     @DateTimeFormat
     @Column(nullable = false)
@@ -36,15 +37,13 @@ public class Order {
     @Column(nullable = false)
     private LocalDate dateEnd;
 
-    @Column(name = "orderstatus")
     private Orderstatus orderstatus;
 
-    @Column(name = "passportdata", nullable = false)
+    @Column(name = "passport_data", nullable = false)
     private String passportData;
 
     private boolean driverNeeded;
 
-    @Column(name = "total")
     private float total;
 
     private String additionalInfo;

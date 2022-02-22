@@ -1,5 +1,5 @@
 package com.epam.spring.controller.dto;
 
 public enum Orderstatus {
-    REQUESTED, PENDING, APPROVED, PAID, DECLINED
+    NEW_ORDER, PENDING, APPROVED, PAID, DECLINED, COMPLETE
 }

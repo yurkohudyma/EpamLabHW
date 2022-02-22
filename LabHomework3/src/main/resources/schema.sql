@@ -1,4 +1,4 @@
-create table car
+create table car_table
 (
     car_id integer not null auto_increment,
     carclass enum ('MINI', 'ECONOMY', 'SUV', 'ESTATE', 'PREMIUM'),
@@ -11,17 +11,17 @@ create table car
 
 create table order_table
 (
-    id integer not null auto_increment,
+    order_id integer not null auto_increment,
     user_id integer not null,
     car_id integer not null,
     additional_info varchar(255),
     date_begin date,
     date_end date,
     driver_needed boolean not null,
-    orderstatus enum('NEW ORDER', 'PENDING', 'APPROVED', 'PAID',  'DECLINED', 'COMPLETE'),
+    orderstatus enum('NEW_ORDER', 'PENDING', 'APPROVED', 'PAID',  'DECLINED', 'COMPLETE'),
     passport_data varchar(255) not null,
     total float,
-    primary key (id)
+    primary key (order_id)
 );
 
 create table user_table

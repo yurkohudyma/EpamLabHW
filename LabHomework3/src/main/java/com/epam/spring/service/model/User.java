@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.Instant;
-import java.util.List;
 
 @Entity
 @Data
@@ -18,11 +17,8 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
+    @Column(name = "user_id")
     private int id;
-
-    @OneToMany(mappedBy = "userId")
-    private List<Order> orders;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;

@@ -5,7 +5,6 @@ import com.epam.spring.controller.dto.Orderstatus;
 import com.epam.spring.service.OrderService;
 import com.epam.spring.service.exception.EntityNotFoundException;
 import com.epam.spring.service.model.Order;
-import com.epam.spring.service.model.User;
 import com.epam.spring.service.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,11 +31,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> getOrders() {
+        log.info("get All Orders");
         return orderRepository.findAll();
     }
 
     @Override
-    public List<Order> getByUserId(User userId) {
+    public List<Order> getByUserId(int userId) {
+        log.info("get Order by userid {}", userId);
         return orderRepository.findByUserId(userId);
     }
 

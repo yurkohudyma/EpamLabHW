@@ -5,7 +5,6 @@ import com.epam.spring.controller.dto.Orderstatus;
 import com.epam.spring.service.OrderService;
 import com.epam.spring.service.mapper.OrderMapper;
 import com.epam.spring.service.model.Order;
-import com.epam.spring.service.model.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -45,9 +44,9 @@ public class OrderController {
 
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation("Get orders by user id")
-    @GetMapping(value = "/ordersbyUserId/{user_id}")
-    public List<OrderDto> getOrdersById(@PathVariable User user_id) {
-        List<Order> orders = orderService.getByUserId(user_id);
+    @GetMapping(value = "/ordersbyUserId/{userId}")
+    public List<OrderDto> getOrdersById(@PathVariable int userId) {
+        List<Order> orders = orderService.getByUserId(userId);
         return OrderMapper.INSTANCE.mapOrderDtos(orders);
     }
 
@@ -55,7 +54,7 @@ public class OrderController {
     @ApiOperation("Get all orders")
     @GetMapping(value = "/orders")
     public List<OrderDto> getAllOrders() {
-        return OrderMapper.INSTANCE
-                .mapOrderDtos(orderService.getOrders());
+        List<Order> orders = orderService.getOrders();
+        return OrderMapper.INSTANCE.mapOrderDtos(orders);
     }
 }

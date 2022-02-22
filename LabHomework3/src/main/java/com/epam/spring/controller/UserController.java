@@ -30,7 +30,7 @@ public class UserController {
 
     @ApiOperation("Get users of a accesslevel")
     @GetMapping(value = "/userACCESSLEVEL/{accesslevel}")
-    public List<UserDto> getAccesslevelClassUsers(@PathVariable Accesslevel accesslevel) {
+    public List<UserDto> getAccesslevelUsers(@PathVariable Accesslevel accesslevel) {
         List<User> users = userService.findByAccesslevel(accesslevel);
         return UserMapper.INSTANCE.mapUserDtos(users);
     }

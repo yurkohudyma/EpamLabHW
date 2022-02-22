@@ -1,5 +1,6 @@
 package com.epam.spring.controller.dto;
 
+import com.epam.spring.service.model.Car;
 import com.epam.spring.service.model.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -25,6 +26,8 @@ public class OrderDto {
     private int id;
 
     private User userId;
+
+    private Car carId;
 
     @DateTimeFormat
     private LocalDate dateBegin;

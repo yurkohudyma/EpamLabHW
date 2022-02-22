@@ -19,12 +19,12 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
 
+    @JsonProperty(access = READ_ONLY)
+    private int id;
+
     private String password;
 
     private String name;
-
-    @JsonProperty(access = READ_ONLY)
-    private int id;
 
     @Email
     @NotBlank(message = "{email.notblank}"/*, groups = OnCreate.class*/)

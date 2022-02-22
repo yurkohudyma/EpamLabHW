@@ -12,6 +12,7 @@ import javax.validation.constraints.Positive;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "car_table")
 
 public class Car {
 

@@ -31,16 +31,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> getUsers() {
+        log.info("get All Users");
         return userRepository.findAll();
     }
 
     @Override
     public List<User> getUserByEmail(String email) {
+        log.info("get User by email {}", email);
         return userRepository.findByEmail(email);
     }
 
     @Override
     public List<User> findByAccesslevel(Accesslevel accesslevel) {
+        log.info("get User by accesslevel {}", accesslevel);
         return userRepository.findByAccesslevel(accesslevel);
     }
 
