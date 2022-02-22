@@ -1,7 +1,6 @@
 package com.epam.spring.service.model;
 
-import com.epam.spring.controller.dto.Carclass;
-import com.epam.spring.controller.dto.OrderStatus;
+import com.epam.spring.controller.dto.Orderstatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,36 +18,34 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "order_id")
-    private long orderId;
+    @Column(name = "id")
+    private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User username;
+    private User userId;
 
-    @Column(name = "model", nullable = false, unique = true)
-    private String model;
-
-    @Column(name = "carclass", nullable = false)
-    private Carclass carClass;
+    @JoinColumn(name = "car_id", nullable = false)
+    private int car_id;
 
     @DateTimeFormat
+    @Column(nullable = false)
     private LocalDate dateBegin;
 
     @DateTimeFormat
+    @Column(nullable = false)
     private LocalDate dateEnd;
 
-    @Column(name = "orderstatus", nullable = false)
-    private OrderStatus orderStatus;
+    @Column(name = "orderstatus")
+    private Orderstatus orderstatus;
 
     @Column(name = "passportdata", nullable = false)
     private String passportData;
 
     private boolean driverNeeded;
 
-    @Column(name = "price", nullable = false)
-    private float price;
+    @Column(name = "total")
+    private float total;
 
     private String additionalInfo;
-
 }

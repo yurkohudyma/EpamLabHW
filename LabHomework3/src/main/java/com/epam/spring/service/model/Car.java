@@ -17,6 +17,7 @@ public class Car {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "car_id")
     private int id;
 
     private String model;
@@ -31,12 +32,4 @@ public class Car {
 
     @Positive
     private int seats;
-
-    public Car(String model, Carclass carclass, float price, String text, int seats) {
-        this.model = model;
-        this.carclass = carclass;
-        this.price = price;
-        this.text = text;
-        this.seats = seats;
-    }
 }

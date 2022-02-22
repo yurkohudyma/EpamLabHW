@@ -1,35 +1,35 @@
 create table car
 (
-    id integer not null,
+    car_id integer not null auto_increment,
     carclass enum ('MINI', 'ECONOMY', 'SUV', 'ESTATE', 'PREMIUM'),
     model varchar(255),
     price float not null,
     seats integer not null,
     text varchar(255),
-    primary key (id)
+    primary key (car_id)
 );
 
 create table order_table
 (
-    order_id integer not null,
+    id integer not null auto_increment,
+    user_id integer not null,
+    car_id integer not null,
     additional_info varchar(255),
-    carclass enum ('MINI', 'ECONOMY', 'SUV', 'ESTATE', 'PREMIUM'),
-    date_begin date, date_end date,
+    date_begin date,
+    date_end date,
     driver_needed boolean not null,
-    model varchar(255) not null,
-    orderstatus enum('1', '2', '3', '4'),
-    passportdata varchar(255) not null,
-    price float not null,
-    user_id integer,
-    primary key (order_id)
+    orderstatus enum('NEW ORDER', 'PENDING', 'APPROVED', 'PAID',  'DECLINED', 'COMPLETE'),
+    passport_data varchar(255) not null,
+    total float,
+    primary key (id)
 );
 
 create table user_table
 (
-    id integer not null,
+    user_id integer not null auto_increment,
     accesslevel enum('ADMIN', 'USER', 'MANAGER', 'BLOCKED'),
     email varchar(255) not null,
     name varchar(255),
     password varchar(255),
-    primary key (id)
+    primary key (user_id)
 );

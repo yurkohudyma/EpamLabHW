@@ -1,5 +1,6 @@
 package com.epam.spring.controller.dto;
 
+import com.epam.spring.service.model.User;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,13 +24,7 @@ public class OrderDto {
     @JsonProperty(access = READ_ONLY)
     private int id;
 
-    private int userId;
-
-    private int carId;
-
-    private String model;
-
-    private Carclass carClass;
+    private User userId;
 
     @DateTimeFormat
     private LocalDate dateBegin;
@@ -37,8 +32,7 @@ public class OrderDto {
     @DateTimeFormat
     private LocalDate dateEnd;
 
-    @NotBlank
-    private OrderStatus orderStatus;
+    private Orderstatus orderstatus;
 
     @NotBlank
     private String passportData;
@@ -46,10 +40,7 @@ public class OrderDto {
     @NotBlank
     private boolean driverNeeded;
 
-    private float price;
+    private float total;
 
     private String additionalInfo;
-
-    private String userName;
-
 }

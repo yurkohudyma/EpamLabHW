@@ -2,7 +2,6 @@ package com.epam.spring.controller.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.Email;
@@ -17,17 +16,20 @@ import static com.fasterxml.jackson.annotation.JsonProperty.Access.READ_ONLY;
  */
 
 @Data
-@Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserDto {
 
-    String password;
-    String name;
+    private String password;
+
+    private String name;
+
     @JsonProperty(access = READ_ONLY)
     private int id;
+
     @Email
     @NotBlank(message = "{email.notblank}"/*, groups = OnCreate.class*/)
     private String email;
+
     @NotBlank(message = "{accesslevel.notblank}")
     private Accesslevel accesslevel;
 }
