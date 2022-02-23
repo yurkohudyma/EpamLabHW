@@ -1,5 +1,6 @@
 package com.epam.spring.service;
 
+import com.epam.spring.controller.dto.CarDto;
 import com.epam.spring.controller.dto.Carclass;
 import com.epam.spring.service.model.Car;
 
@@ -13,9 +14,9 @@ public interface CarService {
 
     List<Car> findByCarclass(Carclass carclass);
 
-    List<Car> getCarByModel(String model);
+    Car getCarByModel(String model);
 
-
+    CarDto createCar(CarDto carDto);
 
 
 }

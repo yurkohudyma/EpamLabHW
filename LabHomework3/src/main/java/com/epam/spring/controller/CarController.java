@@ -37,9 +37,9 @@ public class CarController {
 
     @ApiOperation("Get model")
     @GetMapping(value = "/carMODEL/{model}")
-    public List<CarDto> findByModel(@PathVariable String model) {
-        List<Car> cars = carService.getCarByModel(model);
-        return CarMapper.INSTANCE.mapCarDtos(cars);
+    public CarDto findByModel(@PathVariable String model) {
+        Car car = carService.getCarByModel(model);
+        return CarMapper.INSTANCE.mapCarDto(car);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -56,5 +56,12 @@ public class CarController {
     public List<CarDto> getAllCars() {
         List<Car> cars = carService.getCars();
         return CarMapper.INSTANCE.mapCarDtos(cars);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation("Create car")
+    @PostMapping(value = "/newcar")
+    public CarDto createCar(@RequestBody CarDto carDto) {
+        return carService.createCar(carDto);
     }
 }

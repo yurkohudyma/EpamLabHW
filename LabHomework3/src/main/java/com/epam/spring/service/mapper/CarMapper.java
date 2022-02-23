@@ -14,5 +14,7 @@ public interface CarMapper {
 
     List<CarDto> mapCarDtos(List<Car> cars);
 
-    CarDto mapCarDto(Car cars);
+    CarDto mapCarDto(Car car);
+
+    Car mapCar(CarDto carDto);
 }

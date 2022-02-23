@@ -33,8 +33,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getUsers() {
         log.info("get All Users sorted by name");
-        Sort sort = Sort.by("name");
-        return userRepository.findAll(sort);
+        return userRepository.findAll(Sort.by("name"));
     }
 
     @Override

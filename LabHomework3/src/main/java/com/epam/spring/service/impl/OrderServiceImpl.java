@@ -33,8 +33,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> getOrders() {
         log.info("get All Orders sorted by date_begin");
-        Sort sort = Sort.by("dateBegin");
-        return orderRepository.findAll(sort);
+        return orderRepository.findAll(Sort.by("dateBegin"));
     }
 
     @Override

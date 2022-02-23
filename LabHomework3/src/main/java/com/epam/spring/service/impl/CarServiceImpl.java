@@ -1,14 +1,18 @@
 package com.epam.spring.service.impl;
 
+import com.epam.spring.controller.dto.CarDto;
 import com.epam.spring.controller.dto.Carclass;
 import com.epam.spring.service.CarService;
+import com.epam.spring.service.exception.EntityAlreadyExistsException;
 import com.epam.spring.service.exception.EntityNotFoundException;
+import com.epam.spring.service.mapper.CarMapper;
 import com.epam.spring.service.model.Car;
 import com.epam.spring.service.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -32,14 +36,26 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<Car> getCars() {
         log.info("get All Cars sorted by model");
-        Sort sort = Sort.by("model");
-        return carRepository.findAll(sort);
+        return carRepository.findAll(Sort.by("model"));
     }
 
     @Override
-    public List<Car> getCarByModel(String model) {
+    public Car getCarByModel(String model) {
         log.info("get Car by Model");
         return carRepository.findByModel(model);
+    }
+
+    @Transactional
+    @Override
+    public CarDto createCar(CarDto carDto) {
+        log.info("creating {} car", carDto.getModel());
+        if (carRepository.existsById(carDto.getId())) {
+            throw new EntityAlreadyExistsException("Car already exists");
+        }
+        Car car = CarMapper.INSTANCE.mapCar(carDto);
+        car = carRepository.save(car);
+        log.info("{} car with {} id created", car.getModel(), car.getId());
+        return CarMapper.INSTANCE.mapCarDto(car);
     }
 
     @Override

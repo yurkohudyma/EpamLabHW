@@ -17,7 +17,7 @@ import java.time.LocalDate;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private int id;
 
@@ -44,6 +44,7 @@ public class Order {
 
     private boolean driverNeeded;
 
+    @Column(precision = 2, scale = 2 /*not working*/)
     private float total;
 
     private String additionalInfo;

@@ -13,7 +13,7 @@ public interface CarRepository extends JpaRepository<Car, Integer> {
 
     Car findById(int id);
 
-    List<Car> findByModel(String model);
+    Car findByModel(String model);
 
     List<Car> findByCarclass(Carclass carclass);
 
