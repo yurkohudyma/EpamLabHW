@@ -7,6 +7,7 @@ import com.epam.spring.service.model.Car;
 import com.epam.spring.service.repository.CarRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,16 +31,20 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> getCars() {
-        return carRepository.findAll();
+        log.info("get All Cars sorted by model");
+        Sort sort = Sort.by("model");
+        return carRepository.findAll(sort);
     }
 
     @Override
     public List<Car> getCarByModel(String model) {
+        log.info("get Car by Model");
         return carRepository.findByModel(model);
     }
 
     @Override
     public List<Car> findByCarclass(Carclass carclass) {
+        log.info("get Car by Carclass");
         return carRepository.findByCarclass(carclass);
     }
 }

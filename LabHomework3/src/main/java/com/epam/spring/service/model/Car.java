@@ -13,7 +13,6 @@ import javax.validation.constraints.Positive;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "car_table")
-
 public class Car {
 
     @Id

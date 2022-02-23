@@ -2,6 +2,7 @@ package com.epam.spring.service.repository;
 
 import com.epam.spring.controller.dto.Orderstatus;
 import com.epam.spring.service.model.Order;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -20,6 +21,6 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
 
     List<Order> findByOrderstatus(Orderstatus orderstatus);
 
-    List<Order> findAll();
+    List<Order> findAll(Sort sort);
 
 }

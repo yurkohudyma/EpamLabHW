@@ -8,6 +8,7 @@ import com.epam.spring.service.model.Order;
 import com.epam.spring.service.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,8 +32,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> getOrders() {
-        log.info("get All Orders");
-        return orderRepository.findAll();
+        log.info("get All Orders sorted by date_begin");
+        Sort sort = Sort.by("dateBegin");
+        return orderRepository.findAll(sort);
     }
 
     @Override

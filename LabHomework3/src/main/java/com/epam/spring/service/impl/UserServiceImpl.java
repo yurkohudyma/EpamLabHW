@@ -3,11 +3,12 @@ package com.epam.spring.service.impl;
 import com.epam.spring.controller.dto.Accesslevel;
 import com.epam.spring.controller.dto.UserDto;
 import com.epam.spring.service.UserService;
-import com.epam.spring.service.exception.EntityNotFoundException;
+import com.epam.spring.service.exception.UserNotFoundException;
 import com.epam.spring.service.model.User;
 import com.epam.spring.service.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,13 +27,14 @@ public class UserServiceImpl implements UserService {
         if (userRepository.existsById(id)) {
             return userRepository.findById(id);
         }
-        throw new EntityNotFoundException("User not found");
+        throw new UserNotFoundException("User not found");
     }
 
     @Override
     public List<User> getUsers() {
-        log.info("get All Users");
-        return userRepository.findAll();
+        log.info("get All Users sorted by name");
+        Sort sort = Sort.by("name");
+        return userRepository.findAll(sort);
     }
 
     @Override

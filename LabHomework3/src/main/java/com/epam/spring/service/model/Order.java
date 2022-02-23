@@ -30,11 +30,11 @@ public class Order {
     private Car carId;
 
     @DateTimeFormat
-    @Column(nullable = false)
+    @Column(name = "date_begin", nullable = false)
     private LocalDate dateBegin;
 
     @DateTimeFormat
-    @Column(nullable = false)
+    @Column(name = "date_end", nullable = false)
     private LocalDate dateEnd;
 
     private Orderstatus orderstatus;
